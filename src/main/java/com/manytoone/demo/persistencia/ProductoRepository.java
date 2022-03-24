@@ -6,10 +6,12 @@ import com.manytoone.demo.persistencia.crud.ProductoCrudRepository;
 import com.manytoone.demo.persistencia.entity.Producto;
 import com.manytoone.demo.persistencia.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductoCrudRepository productoCrudRepository;
@@ -18,7 +20,7 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public List<Product> getAll() {
-        List<Producto> productos = productoCrudRepository.findAll();
+        List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
         return mapper.toProducts(productos);
     }
 

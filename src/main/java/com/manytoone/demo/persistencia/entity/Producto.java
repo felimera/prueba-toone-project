@@ -14,8 +14,8 @@ public class Producto {
     private String imagen;
     @Column(name = "id_categoria")
     private Integer idCategoria;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_categoria", referencedColumnName = "categorias")
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
 
     public Long getId() {
