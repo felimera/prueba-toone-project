@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = Constant.NAMESPRING, uses = {CategoryMapper.class})
+@Mapper(componentModel = "spring", uses = {CategoryMapper.class})
 public interface ProductMapper {
     @Mappings({
             @Mapping(source = "id", target = "productId"),
