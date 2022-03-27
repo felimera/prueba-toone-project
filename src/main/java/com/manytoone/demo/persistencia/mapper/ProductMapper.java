@@ -10,13 +10,13 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = Constant.NAMESPRING, uses = {CategoryMapper.class})
+@Mapper(componentModel = "spring", uses = {CategoryMapper.class})
 public interface ProductMapper {
     @Mappings({
             @Mapping(source = "id", target = "productId"),
             @Mapping(source = "nombre", target = "name"),
             @Mapping(source = "precio", target = "price"),
-            @Mapping(source = "imagen", target = "pircture"),
+            @Mapping(source = "imagen", target = "picture"),
             @Mapping(source = "idCategoria", target = "categoryId"),
             @Mapping(source = "categoria", target = "category")
     })

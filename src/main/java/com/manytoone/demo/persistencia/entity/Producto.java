@@ -13,9 +13,9 @@ public class Producto {
     private String precio;
     private String imagen;
     @Column(name = "id_categoria")
-    private Integer idCategoria;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_categoria", referencedColumnName = "categorias")
+    private Long idCategoria;
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
 
     public Long getId() {
@@ -50,11 +50,11 @@ public class Producto {
         this.imagen = imagen;
     }
 
-    public Integer getIdCategoria() {
+    public Long getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(Integer idCategoria) {
+    public void setIdCategoria(Long idCategoria) {
         this.idCategoria = idCategoria;
     }
 

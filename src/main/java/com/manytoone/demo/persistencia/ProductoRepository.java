@@ -6,20 +6,29 @@ import com.manytoone.demo.persistencia.crud.ProductoCrudRepository;
 import com.manytoone.demo.persistencia.entity.Producto;
 import com.manytoone.demo.persistencia.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductoCrudRepository productoCrudRepository;
-    @Autowired
+    @Autowired(required = false)
     private ProductMapper mapper;
+
+    public ProductoRepository(ProductMapper mapper) {
+        this.mapper = mapper;
+    }
 
     @Override
     public List<Product> getAll() {
-        List<Producto> productos = productoCrudRepository.findAll();
-        return mapper.toProducts(productos);
+        List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
+        if (!productos.isEmpty())
+            return mapper.toProducts(productos);
+        else return new ArrayList<>();
     }
 
     @Override
